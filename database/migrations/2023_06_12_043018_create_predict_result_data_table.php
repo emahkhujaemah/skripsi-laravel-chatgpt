@@ -16,8 +16,9 @@ class CreatePredictResultDataTable extends Migration
         Schema::create('predict_result_data', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id');
-            $table->string('opinion');
-            $table->string('date');
+            $table->text('opinion');
+            $table->dateTime('date');
+            $table->string('category_prediction');
             $table->timestamps();
         });
     }

@@ -16,10 +16,10 @@ class CreateLabellingDataTable extends Migration
         Schema::create('labelling_data', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id');
-            $table->string('opinion');
-            $table->string('positif');
-            $table->string('netral');
-            $table->string('negatif');
+            $table->text('opinion');
+            $table->double('positif');
+            $table->double('netral');
+            $table->double('negatif');
             $table->timestamps();
         });
     }

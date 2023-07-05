@@ -16,8 +16,8 @@ class CreateTrainingDataTable extends Migration
         Schema::create('training_data', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id');
-            $table->string('opinion');
-            $table->string('date');
+            $table->text('opinion');
+            $table->dateTime('date');
             $table->timestamps();
         });
     }
