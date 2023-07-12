@@ -14,9 +14,10 @@ class CreatePredictionsTable extends Migration
     public function up()
     {
         Schema::create('predictions', function (Blueprint $table) {
+            $table->id();
             $table->text('text');
             $table->text('sentiment');
-            $table->float('confidence');
+            $table->double('confidence');
         });
     }
 

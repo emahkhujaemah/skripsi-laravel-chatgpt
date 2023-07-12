@@ -36,7 +36,8 @@
                     <p class="text-center mb-4">The contact form is currently inactive.</p>
                     <div class="wow fadeIn" data-wow-delay="0.3s">
                         <form id="prediction-form" method="POST" action="javascript:void(0)">
-                            {{ csrf_field() }}
+                            {{-- {{ csrf_field() }} --}}
+                            @csrf
                             <div class="row g-3">
                                 <div class="col-md-12">
                                     <div class="form-floating">
@@ -47,8 +48,9 @@
                                 <button type="submit" style="border-radius: 20px;" class="btn btn-primary" id="prediction">Prediction</button>
                                 <div class="col-md-12">
                                     <div class="form-floating">
-                                        <label for="predict-sentiment">Result</label>
+                                        <h3>Result</h3>
                                         <h5 id="predict-sentiment"></h5>
+                                        <h5 id="predict-confidence"></h5>
                                     </div>
                                 </div>
                             </div>
@@ -93,33 +95,70 @@
     {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  --}}
     <script> console.log('Hi!'); </script>
 
-    
-    <script>
-    
+    <script> 
     const url = "{{ $baseApi }}" + 'api/predict-lstm';
 
     $(document).ready(function () {
-            $('#prediction-form').submit(function (e) {
-                e.preventDefault();
-                var text = $('#predict-input').val();
-                $.ajax({
-                    url: "/api/predict-sentiment",
-                    type: 'POST',
-                    data: {
-                        text: text,
-                        _token: '{{ csrf_token() }}'
-                    },
-                    success: function (response) {
-                        var result = response.sentiment;
-                        $('#predict-sentiment').text(result);
-                        console.log("success");
-                    },
-                    error: function (xhr, status, error) {
-                        console.log(xhr.responseText);
-                    }
-                });
+        $('#prediction-form').submit(function (e) {
+            e.preventDefault();
+            var text = $('#predict-input').val();
+            $.ajax({
+            url: "/api/prediction",
+            type: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            data: JSON.stringify({
+                text: text,
+                _token: '{{ csrf_token() }}'
+            }),
+            success: function (response) {
+                var result_sentiment = response.sentiment;
+                var result_confidence = response.confidence;
+                $('#predict-sentiment').text(result_sentiment);
+                $('#predict-confidence').text(result_confidence);
+                console.log("success");
+            },
+            error: function (xhr, status, error) {
+                console.log(xhr.responseText);
+            }
             });
         });
+    });
+
+    // // Ambil elemen formulir
+    // var form = document.getElementById('prediction-form');
+
+    // // Tangkap peristiwa submit formulir
+    // form.addEventListener('submit', function(event) {
+    //     event.preventDefault(); // Mencegah perilaku default pengiriman formulir
+    //     // Ambil nilai input teks
+    //     var sentimentInput = document.getElementById('predict-input').value;
+    //     // Buat objek data untuk dikirim ke server
+    //     var data = {
+    //         sentiment: sentimentInput
+    //     };
+
+    //     // Kirim permintaan AJAX ke server
+    //     var xhr = new XMLHttpRequest();
+    //     xhr.open('POST', '/prediction', true); // Ganti '/prediction' dengan URL endpoint yang sesuai di server Anda
+    //     xhr.setRequestHeader('Content-Type', 'application/json');
+
+    //     xhr.onreadystatechange = function() {
+    //         if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+    //             // Tangkap respons dari server
+    //             var response = JSON.parse(xhr.responseText);
+
+    //             // Tampilkan hasil prediksi
+    //             var resultElement = document.getElementById('predict-sentiment');
+    //             resultElement.textContent = response.result;
+    //         }
+    //     };
+
+    //     // Kirim data ke server dalam format JSON
+    //     xhr.send(JSON.stringify(data));
+    // });
+
 
     </script>
 
