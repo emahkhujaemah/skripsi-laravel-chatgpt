@@ -11,7 +11,6 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb justify-content-center justify-content-lg-start mb-0">
                             <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
                             <li class="breadcrumb-item text-white active" aria-current="page">Statistic</li>
                         </ol>
                     </nav>

@@ -42,7 +42,8 @@
                             <tr>
                                 <td> {{$loop->iteration}} </td>
                                 <td>{{$preprocessingData->clean_text}}</td>
-                                <td>{{$preprocessingData->category}}</td>
+                                {{-- <td>{{$preprocessingData->category_id}}</td> --}}
+                                <td>{{$preprocessingData->category->name_category}}</td>
                                 <td>Edit,Hapus</td>
                             </tr>
                             @endforeach

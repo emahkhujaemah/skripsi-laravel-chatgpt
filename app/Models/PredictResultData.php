@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class PredictResultData extends Model
 {
     use HasFactory;
+    
 }

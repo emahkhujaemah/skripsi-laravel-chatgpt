@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,7 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+
         User::create([
             'name' => 'Admin',
             'email' => 'admin@gmail.com',
@@ -22,5 +23,18 @@ class DatabaseSeeder extends Seeder
             // 'level' => true
             // 'role' => 'admin'
         ]);
+
+        Category::create([
+            'name_category' => 'Negatif',
+        ]);
+        
+        Category::create([
+            'name_category' => 'Netral',
+        ]);
+
+        Category::create([
+            'name_category' => 'Positif',
+        ]);
+
     }
 }

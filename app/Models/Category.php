@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    use HasFactory;
+    protected $guarded = ['id'];
+
+    public function preprocessing_data()
+    {
+        return $this->hasMany(PreprocessingData::class);
+    }
 }

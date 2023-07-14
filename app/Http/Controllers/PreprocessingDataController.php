@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\PreprocessingData;
+use App\Models\Category;
 
 class PreprocessingDataController extends Controller
 {
@@ -15,7 +16,9 @@ class PreprocessingDataController extends Controller
     public function index()
     {
         $preprocessingDatas = PreprocessingData::all();
-        return view('preprocessing-data.index', compact('preprocessingDatas'));
+        $category = Category::all();
+
+        return view('preprocessing-data.index', compact(['preprocessingDatas', 'category']));
     }
 
     /**
