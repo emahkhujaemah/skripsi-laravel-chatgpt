@@ -11,11 +11,6 @@ class PreprocessingData extends Model
 
     protected $with = ['category'];
 
-    // protected $fillable = [
-    //     'clean_text',
-    //     'category_id',
-    // ];
-
     public function usermenu_preprocessing_url()
     {
         return 'preprocessing-data';

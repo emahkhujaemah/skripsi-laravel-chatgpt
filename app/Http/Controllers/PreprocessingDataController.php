@@ -18,7 +18,7 @@ class PreprocessingDataController extends Controller
         $preprocessingDatas = PreprocessingData::all();
         $category = Category::all();
 
-        return view('preprocessing-data.index', compact(['preprocessingDatas', 'category']));
+        return view('index-preprocessing', compact(['preprocessingDatas', 'category']));
     }
 
     /**

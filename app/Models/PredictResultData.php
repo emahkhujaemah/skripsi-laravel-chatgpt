@@ -7,6 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class PredictResultData extends Model
 {
-    use HasFactory;
+    protected $guarded = ['id'];
+    protected $with = ['category'];
+
+    public function usermenu_predict_url()
+    {
+        return 'predict-result';
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
     
 }

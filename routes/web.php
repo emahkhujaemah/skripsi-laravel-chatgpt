@@ -75,17 +75,6 @@ Route::post('/api/prediction-lstm', function (Request $request) {
 
 });
 
-Route::post('/api/predict-sentiment', function (Request $request) {
-    $text = $request->input('text');
-
-    // Forward the request to the Flask API
-    $response = Http::post('http://localhost:5000/api/predict-lstm', [
-        'text' => $text,
-    ]);
-
-    return $response->json();
-});
-
 
 Route::get('/api', function (Request $request) {
     // Example using Guzzle
@@ -94,7 +83,6 @@ Route::get('/api', function (Request $request) {
     $response = $client->get($api_url);
 
     $data = $response->getBody();
-
     $api = $data;
 
     return $api;
@@ -110,38 +98,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::resource('/preprocessing-data', PreprocessingDataController::class);
 Route::resource('/training-data', TrainingDataController::class);
 Route::resource('/testing-data', TestingDataController::class);
-Route::resource('/predict-result', PredictResultDataController::class);
+// Route::resource('/predict-result', PredictResultDataController::class);
+Route::get('/predict-result', [PredictResultDataController::class, 'index'])->name('index.result');
 
 
-// Route::post('/prediction', function (Request $request) {
-//     $text = $request->input('text');
-
-//     $client = new Client([
-//         // 'base_uri' => 'http://localhost:5000',
-//         'headers' => [
-//             'Content-Type' => 'application/json',
-//         ],
-//     ]);
-
-//     // Kirim data teks ke backend Flask menggunakan metode POST dengan header Content-Type: application/json
-//     $response = Http::asJson()->post('http://localhost:5000/api/predict-lstm',[
-//         'text' => "openai s chatgpt ios app now available in canada india brazil and more countries by"
-//     ]);
-
-
-//     $result = json_decode($response->getBody(), true);
-
-    // // Ambil hasil prediksi dari respons Flask
-    // $sentiment = $result['sentiment'];
-    // $confidence = $result['confidence'];
-
-    // // Lakukan sesuatu dengan hasil prediksi di Laravel
-    // // ...
-
-    // // Kembalikan respons ke halaman Laravel
-    // return response()->json([
-    //     'sentiment' => $sentiment,
-    //     'confidence' => $confidence
-    // ])->header('Content-Type', 'application/json');
-
-// });

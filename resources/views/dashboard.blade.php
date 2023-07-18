@@ -18,7 +18,7 @@
                 <div class="inner">
                     <h3>5000</h3>
 
-                    <p>Data Training</p>
+                    <p>Preprocessing Data</p>
                 </div>
                 <div class="icon">
                     <i class="fas fa-fw fa-person-booth"></i>  
@@ -32,7 +32,7 @@
                 <div class="small-box bg-green">
                 <div class="inner">
                     <h3>2000</h3>
-                    <p>Data Testing</p>
+                    <p>Training Data</p>
                 </div>
                 <div class="icon">
                     <i class="fas fas fa-id-card"></i>
@@ -47,7 +47,7 @@
             <div class="small-box bg-yellow">
                 <div class="inner">
                     <h3>3</h3>
-                    <p>Hasil Prediksi</p>
+                    <p>Testing Data</p>
                 </div>
             <div class="icon">
                 <i class="fas fa-fw fa-money-bill-wave"></i>
@@ -61,7 +61,7 @@
             <div class="small-box bg-red">
                 <div class="inner">
                     <h3>8</h3>
-                    <p>Lokasi</p>
+                    <p>Predict Result Data</p>
                 </div>
             <div class="icon">
                 <i class="fas fa-fw fa-house-user"></i>
@@ -74,11 +74,13 @@
         <!-- /.row -->
         <!-- Main row -->
         <div class="row">
+            
+        <div class="col-md-6">
         <!-- Left col -->
         <!-- PIE CHART -->
-        <div class="card card-danger">
+        <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Pie Chart</h3>
+              <h3 class="card-title">All Dataset Chart</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -95,10 +97,32 @@
             <!-- /.card-body -->
         </div>
         <!-- /.card -->
+        </div>
 
+        <!-- DONUT CHART -->
+        <div class="card card-danger">
+            <div class="card-header">
+              <h3 class="card-title">Predict Result Chart</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
 
         <!-- right col -->
-        </div>
+        
         <!-- /.row (main row) -->
 
         <div class="row m-4">
@@ -122,6 +146,11 @@
     // Get context with jQuery - using jQuery's .get() method.
 
     $(function(){
+        //-------------
+        //- DONUT CHART -
+        //-------------
+        // Get context with jQuery - using jQuery's .get() method.
+        var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
         var donutData        = {
         labels: [
             'Chrome',
@@ -138,6 +167,18 @@
             }
         ]
         }
+        var donutOptions     = {
+        maintainAspectRatio : false,
+        responsive : true,
+        }
+        //Create pie or douhnut chart
+        // You can switch between pie and douhnut using the method below.
+        new Chart(donutChartCanvas, {
+        type: 'doughnut',
+        data: donutData,
+        options: donutOptions
+        })
+
         //-------------
         //- PIE CHART -
         //-------------

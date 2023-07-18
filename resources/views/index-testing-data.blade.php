@@ -1,5 +1,5 @@
 @extends('adminlte::page')
-@section('title', 'Preprocessing Data')
+@section('title', 'Testing Data')
 @section('content_header')
 <div class="row mb-2">
     <div class="col-sm-6">
@@ -27,27 +27,26 @@
 
             <div class="card">
                 <div class="card-body">
-                    <a href="{{ route('preprocessing-data.create') }}" class="btn btn-primary btn-sm mb-2"><i class="fa fa-fw fa-plus-square"></i>Tambah Data</a>
+                    <a href="{{ route('preprocessing-data.create') }}" class="btn btn-primary btn-sm mb-2"><i class="fa fa-fw fa-plus-square"></i>Import Data</a>
                     <table class="table table-hover table-bordered table-stripped table-responsive p-0" id="example">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Clean Text</th>
+                                <th>Opinion</th>
                                 <th>Category</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        {{-- <tbody>
                             @foreach ($preprocessingDatas as $preprocessingData)
                             <tr>
                                 <td> {{$loop->iteration}} </td>
                                 <td>{{$preprocessingData->clean_text}}</td>
-                                {{-- <td>{{$preprocessingData->category_id}}</td> --}}
                                 <td>{{$preprocessingData->category->name_category}}</td>
                                 <td>Edit,Hapus</td>
                             </tr>
                             @endforeach
-                        </tbody>
+                        </tbody> --}}
                     </table>
                 </div>
             </div>

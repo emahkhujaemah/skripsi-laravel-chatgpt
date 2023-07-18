@@ -14,9 +14,10 @@ class TrainingDataController extends Controller
      */
     public function index()
     {
-        $trainingData = TrainingData::latest()->paginate('5');
-        $categories = Category::all();
-        return view('articles.index', compact('articles', 'categories'))->with('i', (request()->input('page', 1) -1) *5);
+        $trainingDatas = TrainingData::all();
+        $category = Category::all();
+
+        return view('index-training-data', compact(['trainingDatas', 'category']));
     }
 
     /**
