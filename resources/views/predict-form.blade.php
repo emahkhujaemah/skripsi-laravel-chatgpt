@@ -23,7 +23,7 @@
     </div>
     <!-- Hero End -->
 
-    <!-- Contact Start -->
+    <!-- Prediction Form CNN Start -->
     <div class="container-fluid py-5">
         <div class="container py-5">
             <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 500px;">
@@ -34,22 +34,22 @@
                 <div class="col-lg-7">
                     <p class="text-center mb-4">Prediction Sentiment from Tweets Twitter about ChatGPT</p>
                     <div class="wow fadeIn" data-wow-delay="0.3s">
-                        <form id="prediction-form" method="POST" action="javascript:void(0)">
+                        <form id="prediction-form-cnn" method="POST" action="javascript:void(0)">
                             @csrf
                             <div class="row g-3">
                                 <div class="col-md-12">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="predict-input" placeholder="Predict Sentiment">
-                                        <label for="predict-input">Sentiment Tweet</label>
+                                        <input type="text" class="form-control" id="predict-input-cnn" placeholder="Predict Sentiment">
+                                        <label for="predict-input-cnn">Sentiment Tweet</label>
                                     </div>
                                 </div>
                                 {{-- <button type="submit" style="border-radius: 20px;" class="btn btn-primary" id="prediction">Prediction LSTM</button> --}}
                                 <button type="submit" style="border-radius: 20px;" class="btn btn-primary" id="prediction">Prediction CNN</button>
                                 <div class="col-md-12">
-                                    <div class="form-floating">
-                                        <h3 class="text-center mb-4">Result</h3>
-                                        <h5 class="mb-4 text-primary" id="predict-sentiment"> </h5>
-                                        <h5 class="mb-4 text-primary" id="predict-confidence"> </h5>
+                                    <div class="form-floating text-center ">
+                                        <h3 class="mb-2">Result</h3>
+                                        <h5 class="text-primary" id="predict-sentiment-cnn"> </h5>
+                                        <h5 class="text-primary" id="predict-confidence-cnn"> </h5>
                                     </div>
                                 </div>
                             </div>
@@ -60,10 +60,54 @@
             </div>
         </div>
     </div>
-    <!-- Contact End -->
+    <!-- Prediction Form CNN End -->
         
 
-    <!-- Newsletter Start -->
+    <!-- Footer Start -->
+    <div class="container-fluid bg-primary newsletter py-5">
+
+    </div>
+    <!-- Footer End -->
+
+    <!-- Prediction Form lSTM Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 500px;">
+                <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3">Prediction LSTM</div>
+                <h1 class="mb-4">Prediction Sentiment</h1>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <p class="text-center mb-4">Prediction Sentiment from Tweets Twitter about ChatGPT</p>
+                    <div class="wow fadeIn" data-wow-delay="0.3s">
+                        <form id="prediction-form-lstm" method="POST" action="javascript:void(0)">
+                            @csrf
+                            <div class="row g-3">
+                                <div class="col-md-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="predict-input-lstm" placeholder="Predict Sentiment">
+                                        <label for="predict-input-lstm">Sentiment Tweet</label>
+                                    </div>
+                                </div>
+                                <button type="submit" style="border-radius: 20px;" class="btn btn-primary" id="prediction">Prediction LSTM</button>
+                                <div class="col-md-12">
+                                    <div class="form-floating text-center ">
+                                        <h3 class="mb-2">Result</h3>
+                                        <h5 class="text-primary" id="predict-sentiment-lstm"> </h5>
+                                        <h5 class="text-primary" id="predict-confidence-lstm"> </h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Prediction Form lSTM End -->
+
+    <!-- Footer Start -->
     <div class="container-fluid bg-primary newsletter py-5">
         <div class="container">
             <div class="row g-5 align-items-center">
@@ -75,16 +119,16 @@
                     <div class="d-flex align-items-center mt-4">
                         <a class="btn border rounded-pill text-white px-4 me-3" href="">Let's Connect</a>
                         
-                        <a class="btn btn-outline-light btn-square me-3" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-square me-3" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-square me-3" href=""><i class="fab fa-instagram"></i></a>
-                        <a class="btn btn-outline-light btn-square" href=""><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-outline-light btn-square me-3" href="https://facebook.com/emahkhujaemah"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-square me-3" href="https://twitter.com/emahkhujaemah"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-square me-3" href="https://www.instagram.com/emahkhujaemah/"><i class="fab fa-instagram"></i></a>
+                        <a class="btn btn-outline-light btn-square" href="https://www.linkedin.com/in/emah-khujaemah/"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Newsletter End -->
+    <!-- Footer End -->
 
 
 
@@ -92,17 +136,18 @@
 @push('custom-scripts')
 
     {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  --}}
+
     <script> console.log('Hi!'); </script>
 
     <script> 
     const url = "{{ $baseApi }}" + 'api/predict-lstm';
 
     $(document).ready(function () {
-        $('#prediction-form').submit(function (e) {
+        $('#prediction-form-cnn').submit(function (e) {
             e.preventDefault();
-            var text = $('#predict-input').val();
+            var text = $('#predict-input-cnn').val();
             $.ajax({
-            url: "/api/prediction",
+            url: "/api/prediction-cnn",
             type: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -114,8 +159,8 @@
             success: function (response) {
                 var result_sentiment = response.sentiment;
                 var result_confidence = response.confidence;
-                $('#predict-sentiment').text(result_sentiment);
-                $('#predict-confidence').text(result_confidence);
+                $('#predict-sentiment-cnn').text(result_sentiment);
+                $('#predict-confidence-cnn').text(result_confidence);
                 console.log("success");
             },
             error: function (xhr, status, error) {
@@ -123,40 +168,39 @@
             }
             });
         });
+
+        $('#prediction-form-lstm').submit(function (e) {
+            e.preventDefault();
+            var text = $('#predict-input-lstm').val();
+            $.ajax({
+            url: "/api/prediction-lstm",
+            type: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            data: JSON.stringify({
+                text: text,
+                _token: '{{ csrf_token() }}'
+            }),
+            success: function (response) {
+                var result_sentiment = response.sentiment;
+                var result_confidence = response.confidence;
+                $('#predict-sentiment-lstm').text(result_sentiment);
+                $('#predict-confidence-lstm').text(result_confidence);
+                console.log("success");
+            },
+            error: function (xhr, status, error) {
+                console.log(xhr.responseText);
+            }
+            });
+        });
+        
     });
 
-    // // Ambil elemen formulir
-    // var form = document.getElementById('prediction-form');
+    // $(document).ready(function () {
 
-    // // Tangkap peristiwa submit formulir
-    // form.addEventListener('submit', function(event) {
-    //     event.preventDefault(); // Mencegah perilaku default pengiriman formulir
-    //     // Ambil nilai input teks
-    //     var sentimentInput = document.getElementById('predict-input').value;
-    //     // Buat objek data untuk dikirim ke server
-    //     var data = {
-    //         sentiment: sentimentInput
-    //     };
-
-    //     // Kirim permintaan AJAX ke server
-    //     var xhr = new XMLHttpRequest();
-    //     xhr.open('POST', '/prediction', true); // Ganti '/prediction' dengan URL endpoint yang sesuai di server Anda
-    //     xhr.setRequestHeader('Content-Type', 'application/json');
-
-    //     xhr.onreadystatechange = function() {
-    //         if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-    //             // Tangkap respons dari server
-    //             var response = JSON.parse(xhr.responseText);
-
-    //             // Tampilkan hasil prediksi
-    //             var resultElement = document.getElementById('predict-sentiment');
-    //             resultElement.textContent = response.result;
-    //         }
-    //     };
-
-    //     // Kirim data ke server dalam format JSON
-    //     xhr.send(JSON.stringify(data));
     // });
+
 
 
     </script>

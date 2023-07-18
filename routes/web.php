@@ -25,12 +25,34 @@ Route::get('/about', function () {
     return view('about');
 });
 
-// Route::get('/api/predict-sentiment', [PredictionSentimentController::class, 'sendRequestToFlaskAPI']);
-
-Route::post('/api/prediction', function (Request $request) {
+Route::post('/api/prediction-cnn', function (Request $request) {
     $text = $request->input('text');
 
+    // Example using Guzzle
+    $client = new Client();
+    $response = $client->post('http://localhost:5000/api/predict-cnn', [
+        'json' => ['text' => $text],
+    ]);
+
+    // Retrieve the response from the TensorFlow.js server
+    $result = json_decode($response->getBody(), true);
     
+    // Ambil hasil prediksi dari respons Flask
+    $sentiment = $result['sentiment'];
+    $confidence = $result['confidence'];
+
+
+    // Kembalikan respons ke halaman Laravel
+    return response()->json([
+        'sentiment' => $sentiment,
+        'confidence' => $confidence
+    ]);
+
+});
+
+Route::post('/api/prediction-lstm', function (Request $request) {
+    $text = $request->input('text');
+
     // Example using Guzzle
     $client = new Client();
     $response = $client->post('http://localhost:5000/api/predict-lstm', [
@@ -38,18 +60,12 @@ Route::post('/api/prediction', function (Request $request) {
     ]);
 
     // Retrieve the response from the TensorFlow.js server
-    // $data = json_decode($response->getBody(), true);
-    
     $result = json_decode($response->getBody(), true);
-
-    // return response()->json($data);
     
     // Ambil hasil prediksi dari respons Flask
     $sentiment = $result['sentiment'];
     $confidence = $result['confidence'];
 
-    // Lakukan sesuatu dengan hasil prediksi di Laravel
-    // ...
 
     // Kembalikan respons ke halaman Laravel
     return response()->json([
