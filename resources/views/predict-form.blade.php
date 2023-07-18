@@ -1,7 +1,6 @@
 @extends('layouts.main')
 
 @section('container')
-
     <!-- Hero Start -->
     <div class="container-fluid pt-5 bg-primary hero-header">
         <div class="container pt-5">
@@ -136,7 +135,6 @@
 @push('custom-scripts')
 
     {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  --}}
-
     <script> console.log('Hi!'); </script>
 
     <script> 

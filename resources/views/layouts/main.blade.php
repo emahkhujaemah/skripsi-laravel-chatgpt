@@ -31,6 +31,9 @@
 
     <!-- Template Stylesheet -->
     <link href="{{asset('chatgpt')}}/css/style.css" rel="stylesheet">
+
+    @stack('chartjs')
+    
 </head>
 
 <body>
