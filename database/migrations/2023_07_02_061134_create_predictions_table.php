@@ -13,12 +13,13 @@ class CreatePredictionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('predictions', function (Blueprint $table) {
-            $table->id();
-            $table->text('text');
-            $table->text('sentiment');
-            $table->double('confidence');
-        });
+        // Schema::create('predictions', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->text('text');
+        //     $table->text('sentiment');
+        //     $table->double('confidence');
+        //     $table->text('method');
+        // });
     }
 
     /**

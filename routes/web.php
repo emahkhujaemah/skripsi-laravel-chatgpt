@@ -45,7 +45,7 @@ Route::post('/api/prediction-cnn', function (Request $request) {
     // Kembalikan respons ke halaman Laravel
     return response()->json([
         'sentiment' => $sentiment,
-        'confidence' => $confidence
+        'confidence' => $confidence,
     ]);
 
 });
@@ -70,7 +70,7 @@ Route::post('/api/prediction-lstm', function (Request $request) {
     // Kembalikan respons ke halaman Laravel
     return response()->json([
         'sentiment' => $sentiment,
-        'confidence' => $confidence
+        'confidence' => $confidence,
     ]);
 
 });

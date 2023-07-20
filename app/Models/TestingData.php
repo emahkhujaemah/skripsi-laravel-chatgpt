@@ -5,15 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TrainingData extends Model
+class TestingData extends Model
 {
     protected $guarded = ['id'];
-
     protected $with = ['category'];
 
-    public function usermenu_preprocessing_url()
+    public function usermenu_predict_url()
     {
-        return 'training-data';
+        return 'testing-data';
     }
 
     public function category()

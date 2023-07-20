@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLabellingDataTable extends Migration
+class CreateTestingDataTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateLabellingDataTable extends Migration
      */
     public function up()
     {
-        Schema::create('labelling_data', function (Blueprint $table) {
+        Schema::create('testing_data', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id');
             $table->text('opinion');
-            $table->double('positif');
-            $table->double('netral');
-            $table->double('negatif');
-            $table->timestamps();
+            $table->foreignId('category_id');
         });
     }
 
@@ -31,6 +27,6 @@ class CreateLabellingDataTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('labelling_data');
+        Schema::dropIfExists('testing_data');
     }
 }

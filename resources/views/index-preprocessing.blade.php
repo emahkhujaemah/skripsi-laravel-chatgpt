@@ -32,7 +32,7 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Clean Text</th>
+                                <th>Opinion</th>
                                 <th>Category</th>
                                 <th>Aksi</th>
                             </tr>
@@ -41,8 +41,7 @@
                             @foreach ($preprocessingDatas as $preprocessingData)
                             <tr>
                                 <td> {{$loop->iteration}} </td>
-                                <td>{{$preprocessingData->clean_text}}</td>
-                                {{-- <td>{{$preprocessingData->category_id}}</td> --}}
+                                <td>{{$preprocessingData->opinion}}</td>
                                 <td>{{$preprocessingData->category->name_category}}</td>
                                 <td>Edit,Hapus</td>
                             </tr>

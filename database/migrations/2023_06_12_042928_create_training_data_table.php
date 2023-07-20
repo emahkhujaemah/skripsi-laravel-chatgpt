@@ -17,8 +17,8 @@ class CreateTrainingDataTable extends Migration
             $table->id();
             $table->foreignId('category_id');
             $table->text('opinion');
-            $table->dateTime('date');
-            $table->timestamps();
+            // $table->dateTime('date');
+            // $table->timestamps();
         });
     }
 

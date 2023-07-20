@@ -15,8 +15,9 @@ class CreatePreprocessingDataTable extends Migration
     {
         Schema::create('preprocessing_data', function (Blueprint $table) {
             $table->id();
-            $table->text('clean_text');
+            $table->text('opinion');
             $table->foreignId('category_id');
+            // $table->timestamps();
         });
     }
 

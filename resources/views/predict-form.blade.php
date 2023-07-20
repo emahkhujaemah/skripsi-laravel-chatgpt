@@ -129,10 +129,10 @@
                 _token: '{{ csrf_token() }}'
             }),
             success: function (response) {
-                var result_sentiment = response.sentiment;
-                var result_confidence = response.confidence;
-                $('#predict-sentiment-cnn').text(result_sentiment);
-                $('#predict-confidence-cnn').text(result_confidence);
+                var result_sentiment_cnn = response.sentiment;
+                var result_confidence_cnn = response.confidence;
+                $('#predict-sentiment-cnn').text(result_sentiment_cnn);
+                $('#predict-confidence-cnn').text(result_confidence_cnn);
                 console.log("success");
             },
             error: function (xhr, status, error) {
@@ -155,10 +155,10 @@
                 _token: '{{ csrf_token() }}'
             }),
             success: function (response) {
-                var result_sentiment = response.sentiment;
-                var result_confidence = response.confidence;
-                $('#predict-sentiment-lstm').text(result_sentiment);
-                $('#predict-confidence-lstm').text(result_confidence);
+                var result_sentiment_lstm = response.sentiment;
+                var result_confidence_lstm = response.confidence;
+                $('#predict-sentiment-lstm').text(result_sentiment_lstm);
+                $('#predict-confidence-lstm').text(result_confidence_lstm);
                 console.log("success");
             },
             error: function (xhr, status, error) {

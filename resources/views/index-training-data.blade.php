@@ -37,16 +37,16 @@
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-                        {{-- <tbody>
-                            @foreach ($preprocessingDatas as $preprocessingData)
+                        <tbody>
+                            @foreach ($trainingDatas as $trainingData)
                             <tr>
                                 <td> {{$loop->iteration}} </td>
-                                <td>{{$preprocessingData->clean_text}}</td>
-                                <td>{{$preprocessingData->category->name_category}}</td>
+                                <td>{{$trainingData->opinion}}</td>
+                                <td>{{$trainingData->category->name_category}}</td>
                                 <td>Edit,Hapus</td>
                             </tr>
                             @endforeach
-                        </tbody> --}}
+                        </tbody>
                     </table>
                 </div>
             </div>
