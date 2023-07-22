@@ -16,7 +16,7 @@
                 <!-- small box -->
                 <div class="small-box bg-aqua">
                 <div class="inner">
-                    <h3>5000</h3>
+                    <h3>{{$preprocessingCounts}}</h3>
 
                     <p>Preprocessing Data</p>
                 </div>
@@ -31,7 +31,7 @@
                 <!-- small box -->
                 <div class="small-box bg-green">
                 <div class="inner">
-                    <h3>2000</h3>
+                    <h3>{{$trainingCounts}}</h3>
                     <p>Training Data</p>
                 </div>
                 <div class="icon">
@@ -46,7 +46,7 @@
             <!-- small box -->
             <div class="small-box bg-yellow">
                 <div class="inner">
-                    <h3>3</h3>
+                    <h3>{{$testingCounts}}</h3>
                     <p>Testing Data</p>
                 </div>
             <div class="icon">
@@ -60,7 +60,7 @@
             <!-- small box -->
             <div class="small-box bg-red">
                 <div class="inner">
-                    <h3>8</h3>
+                    <h3>{{$predictResultCounts}}</h3>
                     <p>Predict Result Data</p>
                 </div>
             <div class="icon">

@@ -19,5 +19,10 @@ class PredictResultData extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function graph()
+    {
+        return $this->belongsTo(Category::class);
+    }
     
 }

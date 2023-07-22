@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\PreprocessingData;
+use App\Models\TrainingData;
+use App\Models\TestingData;
+use App\Models\PredictResultData;
 
 class HomeController extends Controller
 {
@@ -23,6 +27,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        // $predictResultDatas = PredictResultData::all();
+        $preprocessingCounts = PreprocessingData::all()->count();
+        $trainingCounts = TrainingData::all()->count();
+        $testingCounts = TestingData::all()->count();
+        $predictResultCounts = PredictResultData::all()->count();
+
+        return view('dashboard', 
+        compact(['preprocessingCounts', 'trainingCounts', 'testingCounts', 'predictResultCounts']));
     }
 }
