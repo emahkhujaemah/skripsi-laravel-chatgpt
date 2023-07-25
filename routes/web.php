@@ -41,7 +41,6 @@ Route::post('/api/prediction-cnn', function (Request $request) {
     $sentiment = $result['sentiment'];
     $confidence = $result['confidence'];
 
-
     // Kembalikan respons ke halaman Laravel
     return response()->json([
         'sentiment' => $sentiment,
@@ -93,12 +92,19 @@ Auth::routes([
     'register' => false
 ]);
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+// Graph
+Route::get('/sentiment-chart/dataAll', [HomeController::class, 'getSentimentChartData'])->name('sentiment-chart.dataAll');
+Route::get('/sentiment-chart/dataPredict', [HomeController::class, 'getSentimentChartPredict'])->name('sentiment-chart.dataPredict');
 
-Route::resource('/preprocessing-data', PreprocessingDataController::class);
-Route::resource('/training-data', TrainingDataController::class);
-Route::resource('/testing-data', TestingDataController::class);
-// Route::resource('/predict-result', PredictResultDataController::class);
-Route::get('/predict-result', [PredictResultDataController::class, 'index'])->name('index.result');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+    Route::resource('/preprocessing-data', PreprocessingDataController::class);
+    Route::resource('/training-data', TrainingDataController::class);
+    Route::resource('/testing-data', TestingDataController::class);
+    Route::resource('/predict-result', PredictResultDataController::class);
+
+});
+
+
 
 

@@ -139,66 +139,68 @@
 @section('js')
 
 <script> console.log('Hi!'); </script>
-<script> 
-    //-------------
-    //- DONUT CHART -
-    //-------------
-    // Get context with jQuery - using jQuery's .get() method.
 
-    $(function(){
-        //-------------
-        //- DONUT CHART -
-        //-------------
-        // Get context with jQuery - using jQuery's .get() method.
-        var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
-        var donutData        = {
-        labels: [
-            'Chrome',
-            'IE',
-            'FireFox',
-            'Safari',
-            'Opera',
-            'Navigator',
-        ],
-        datasets: [
-            {
-            data: [700,500,400,600,300,100],
-            backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+<script>
+    $(function () {
+        $.ajax({
+            url: "{{ route('sentiment-chart.dataAll') }}",
+            method: "GET",
+            success: function (data) {
+                var labels = ['Negative', 'Neutral', 'Positive'];
+                var datasetData = data;
+
+                var ctx = document.getElementById('pieChart').getContext('2d');
+                var sentimentChart = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Sentiment Count',
+                            data: datasetData,
+                            backgroundColor: ['#f56954','#d2d6de', '#00c0ef'],
+                            borderColor: ['#f56954','#d2d6de', '#00c0ef'],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        maintainAspectRatio : false,
+                        responsive : true,
+                    }
+                });
             }
-        ]
-        }
-        var donutOptions     = {
-        maintainAspectRatio : false,
-        responsive : true,
-        }
-        //Create pie or douhnut chart
-        // You can switch between pie and douhnut using the method below.
-        new Chart(donutChartCanvas, {
-        type: 'doughnut',
-        data: donutData,
-        options: donutOptions
-        })
-
-        //-------------
-        //- PIE CHART -
-        //-------------
-        // Get context with jQuery - using jQuery's .get() method.
-        var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
-        var pieData        = donutData;
-        var pieOptions     = {
-        maintainAspectRatio : false,
-        responsive : true,
-        }
-        //Create pie or douhnut chart
-        // You can switch between pie and douhnut using the method below.
-        new Chart(pieChartCanvas, {
-        type: 'pie',
-        data: pieData,
-        options: pieOptions
-        })
-
+        });
     });
+</script>
 
-    </script>
+<script>
+    $(function () {
+        $.ajax({
+            url: "{{ route('sentiment-chart.dataPredict') }}",
+            method: "GET",
+            success: function (data) {
+                var labels = ['Negative', 'Neutral', 'Positive'];
+                var datasetData = data;
+                var ctx = document.getElementById('donutChart').getContext('2d');
+                var sentimentChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Sentiment Count',
+                            data: datasetData,
+                            backgroundColor: ['#f56954','#d2d6de', '#00c0ef'],
+                            borderColor: ['#f56954','#d2d6de', '#00c0ef'],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        maintainAspectRatio : false,
+                        responsive : true,
+                    }
+                });
+            }
+        });
+    });
+</script>
 
 @stop

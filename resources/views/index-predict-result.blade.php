@@ -38,11 +38,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($preprocessingDatas as $preprocessingData)
+                            @foreach ($predictResultDatas as $predictResultData)
                             <tr>
                                 <td> {{$loop->iteration}} </td>
-                                <td>{{$preprocessingData->opinion}}</td>
-                                <td>{{$preprocessingData->category->name_category}}</td>
+                                <td>{{$predictResultData->text}}</td>
+                                <td>{{$predictResultData->sentiment}}</td>
                                 <td>Edit,Hapus</td>
                             </tr>
                             @endforeach
@@ -64,7 +64,7 @@
     <script>
         $('#example').DataTable({
             "responsive": true,
-            'iDisplayLength': 25
+            'iDisplayLength': 10
         });
         function notificationBeforeDelete(event, el) {
             event.preventDefault();

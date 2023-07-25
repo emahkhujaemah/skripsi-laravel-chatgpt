@@ -27,13 +27,47 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // $predictResultDatas = PredictResultData::all();
-        $preprocessingCounts = PreprocessingData::all()->count();
-        $trainingCounts = TrainingData::all()->count();
-        $testingCounts = TestingData::all()->count();
-        $predictResultCounts = PredictResultData::all()->count();
+        $preprocessingCounts = PreprocessingData::count();
+        $trainingCounts = TrainingData::count();
+        $testingCounts = TestingData::count();
+        $predictResultCounts = PredictResultData::count();
 
         return view('dashboard', 
         compact(['preprocessingCounts', 'trainingCounts', 'testingCounts', 'predictResultCounts']));
+    }
+
+    public function showChart()
+    {
+        return view('sentiment_chart');
+    }
+
+    public function getSentimentChartData()
+    {
+        $sentimentData = [];
+
+        // Query untuk mendapatkan data dari tabel sentiments
+        $sentiments = TrainingData::all();
+
+        // Hitung jumlah sentimen untuk setiap label
+        $sentimentData[] = $sentiments->where('category_id', 1)->count();
+        $sentimentData[] = $sentiments->where('category_id', 2)->count();
+        $sentimentData[] = $sentiments->where('category_id', 3)->count();
+
+        return response()->json($sentimentData);
+    }
+
+    public function getSentimentChartPredict()
+    {
+        $sentimentDataPredict = [];
+
+        // Query untuk mendapatkan data dari tabel sentiments
+        $sentimentPredict = PredictResultData::all();
+
+        // Hitung jumlah sentimen untuk setiap label
+        $sentimentDataPredict[] = $sentimentPredict->where('sentiment', 'Negative')->count();
+        $sentimentDataPredict[] = $sentimentPredict->where('sentiment', 'Neutral')->count();
+        $sentimentDataPredict[] = $sentimentPredict->where('sentiment', 'Positive')->count();
+
+        return response()->json($sentimentDataPredict);
     }
 }

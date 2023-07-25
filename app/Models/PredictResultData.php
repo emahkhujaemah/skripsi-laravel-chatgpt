@@ -20,9 +20,25 @@ class PredictResultData extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function graph()
+    public function getCountNegative()
     {
-        return $this->belongsTo(Category::class);
+        $countNegatif = PredictResultData::where('sentiment', 'Negatif')->count();
+
+        return $countNegatif;
+    }
+
+    public function getCountNetral()
+    {
+        $countNetral = PredictResultData::where('sentiment', 'Netral')->count();
+
+        return $countNetral;
+    }
+
+    public function getCountPositive()
+    {
+        $countPositive = PredictResultData::where('sentiment', 'Positive')->count();
+
+        return $countPositive;
     }
     
 }

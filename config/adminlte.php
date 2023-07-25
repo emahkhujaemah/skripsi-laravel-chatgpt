@@ -308,7 +308,7 @@ return [
         ],
         [
             'text' => 'Dashboard',
-            'url'  => 'home',
+            'url'  => 'dashboard',
             'icon' => 'nav-icon fas fa-tachometer-alt',
         ],
         ['header' => 'Data Master'],
