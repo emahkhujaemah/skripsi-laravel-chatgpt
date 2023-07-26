@@ -21,7 +21,7 @@
                     <p>Preprocessing Data</p>
                 </div>
                 <div class="icon">
-                    <i class="fas fa-fw fa-person-booth"></i>  
+                    <i class="fas fa-fw fa-chart-pie"></i>  
                 </div>
                 <a href="/data-training" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
@@ -35,7 +35,7 @@
                     <p>Training Data</p>
                 </div>
                 <div class="icon">
-                    <i class="fas fas fa-id-card"></i>
+                    <i class="fas fas fa-th"></i>
                     {{-- <i class="fa-solid fa-id-card-clip"></i> --}}
                 </div>
                 <a href="/data-testing" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
@@ -50,7 +50,7 @@
                     <p>Testing Data</p>
                 </div>
             <div class="icon">
-                <i class="fas fa-fw fa-money-bill-wave"></i>
+                <i class="fas fa-fw fa-edit"></i>
             </div>
                 <a href="/guru" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
@@ -64,7 +64,7 @@
                     <p>Predict Result Data</p>
                 </div>
             <div class="icon">
-                <i class="fas fa-fw fa-house-user"></i>
+                <i class="fas fa-fw fa-image"></i>
             </div>
             <a href="/pelajaran" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
@@ -100,7 +100,7 @@
         </div>
 
         <!-- DONUT CHART -->
-        <div class="card card-danger">
+        <div class="card card-success">
             <div class="card-header">
               <h3 class="card-title">Predict Result Chart</h3>
 

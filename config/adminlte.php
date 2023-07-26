@@ -256,9 +256,9 @@ return [
     'dashboard_url' => '/sentiment',
     'logout_url' => 'logout',
     'login_url' => 'login',
-    'register_url' => 'register',
-    'password_reset_url' => 'password/reset',
-    'password_email_url' => 'password/email',
+    'register_url' => false,
+    'password_reset_url' => false,
+    'password_email_url' => false,
     'profile_url' => false,
 
     /*
@@ -315,22 +315,22 @@ return [
         [
             'text' => 'Data Preprocessing',
             'url'  => 'preprocessing-data',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-fw fa-chart-pie',
         ],
         [
-            'text' => 'Data Training',
+            'text' => 'Training Data',
             'url'  => 'training-data',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-fw fa-th',
         ],
         [
-            'text' => 'Data Testing',
+            'text' => 'Testing Data',
             'url'  => 'testing-data',
-            'icon' => 'fas fa-fw fa-id-card',
+            'icon' => 'fas fa-fw fa-edit',
         ],
         [
-            'text'    => 'Hasil Prediksi',
+            'text'    => 'Predict Result',
             'url'     => 'predict-result',
-            'icon'    => 'fas fa-fw fa-landmark',
+            'icon'    => 'fas fa-fw fa-image',
         ],
 
         // Sidebar items:
