@@ -311,9 +311,9 @@ return [
             'url'  => 'dashboard',
             'icon' => 'nav-icon fas fa-tachometer-alt',
         ],
-        ['header' => 'Data Master'],
+        ['header' => 'MASTER DATA'],
         [
-            'text' => 'Data Preprocessing',
+            'text' => 'Preprocessing Data',
             'url'  => 'preprocessing-data',
             'icon' => 'fas fa-fw fa-chart-pie',
         ],
@@ -328,7 +328,7 @@ return [
             'icon' => 'fas fa-fw fa-edit',
         ],
         [
-            'text'    => 'Predict Result',
+            'text'    => 'Predict Result Data',
             'url'     => 'predict-result',
             'icon'    => 'fas fa-fw fa-image',
         ],
