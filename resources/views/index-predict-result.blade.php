@@ -34,7 +34,7 @@
                                 <th>No</th>
                                 <th>Opinion</th>
                                 <th>Category</th>
-                                <th>Aksi</th>
+                                {{-- <th>Aksi</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -43,7 +43,7 @@
                                 <td> {{$loop->iteration}} </td>
                                 <td>{{$predictResultData->text}}</td>
                                 <td>{{$predictResultData->sentiment}}</td>
-                                <td>Edit,Hapus</td>
+                                {{-- <td>Edit,Hapus</td> --}}
                             </tr>
                             @endforeach
                         </tbody>

@@ -34,7 +34,7 @@
                                 <th>No</th>
                                 <th>Opinion</th>
                                 <th>Category</th>
-                                <th>Aksi</th>
+                                {{-- <th>Aksi</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -43,7 +43,13 @@
                                 <td> {{$loop->iteration}} </td>
                                 <td>{{$preprocessingData->opinion}}</td>
                                 <td>{{$preprocessingData->category->name_category}}</td>
-                                <td>Edit,Hapus</td>
+                                <!-- <td width="5%">
+                                    <div class="btn btn-group">
+                                        <a href="{{ route('santri.show', $santri) }}" class="btn btn-sm btn-success" ><i class="fas fa-eye"></i></a>
+                                        <a href="{{ route('santri.edit', $santri) }}" class="btn btn-sm btn-warning" ><i class="fas fa-edit"></i></a>
+                                        <a href="{{route('preprocessing-data.destroy', $preprocessingDatas)}}" onclick="notificationBeforeDelete(event, this)" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                                    </div>
+                                </td> -->
                             </tr>
                             @endforeach
                         </tbody>

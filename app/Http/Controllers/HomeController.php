@@ -46,7 +46,7 @@ class HomeController extends Controller
         $sentimentData = [];
 
         // Query untuk mendapatkan data dari tabel sentiments
-        $sentiments = TrainingData::all();
+        $sentiments = PreprocessingData::all();
 
         // Hitung jumlah sentimen untuk setiap label
         $sentimentData[] = $sentiments->where('category_id', 1)->count();

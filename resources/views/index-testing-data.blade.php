@@ -34,7 +34,7 @@
                                 <th>No</th>
                                 <th>Opinion</th>
                                 <th>Category</th>
-                                <th>Aksi</th>
+                                {{-- <th>Aksi</th> --}}
                             </tr>
                         </thead>
                         <tbody>
@@ -43,7 +43,7 @@
                                 <td> {{$loop->iteration}} </td>
                                 <td>{{$testingData->opinion}}</td>
                                 <td>{{$testingData->category->name_category}}</td>
-                                <td>Edit,Hapus</td>
+                                {{-- <td>Edit,Hapus</td> --}}
                             </tr>
                             @endforeach
                         </tbody>

@@ -79,11 +79,13 @@ class PreprocessingDataController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\PreprocessingData  $preprocessingDatas
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $preprocessingDatas = PreprocessingData::find($id);
+        $preprocessingDatas->delete();
+        return redirect('/preprocessing-data')->with('pesan', 'Data Berhasil Dihapus !');
     }
 }
