@@ -9,7 +9,7 @@ use App\Http\Controllers\TrainingDataController;
 use App\Http\Controllers\TestingDataController;
 use App\Http\Controllers\PreprocessingDataController;
 use App\Http\Controllers\PredictResultDataController;
-use App\Http\Controllers\API\PredictionSentimentController;
+use App\Http\Controllers\StatisticController;
 
 
 Route::get('/', function () {
@@ -18,16 +18,32 @@ Route::get('/', function () {
 Route::get('/sentiment', function () {
     return view('predict-form');
 });
-Route::get('/statistic', function () {
-    return view('statistic');
-});
 Route::get('/about', function () {
     return view('about');
 });
+Route::get('/statistic', [StatisticController::class, 'showChart'])->name('statistic');
 
+Auth::routes([
+    'register' => false
+]);
+
+// Graph
+Route::get('/sentiment-chart/dataAll', [HomeController::class, 'getSentimentChartData'])->name('sentiment-chart.dataAll');
+Route::get('/sentiment-chart/dataPredict', [HomeController::class, 'getSentimentChartPredict'])->name('sentiment-chart.dataPredict');
+
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+    Route::resource('/preprocessing-data', PreprocessingDataController::class);
+    Route::resource('/training-data', TrainingDataController::class);
+    Route::resource('/testing-data', TestingDataController::class);
+    Route::resource('/predict-result', PredictResultDataController::class);
+});
+
+
+// API
 Route::post('/api/prediction-cnn', function (Request $request) {
     $text = $request->input('text');
-
     // Example using Guzzle
     $client = new Client();
     $response = $client->post('http://localhost:5000/api/predict-cnn', [
@@ -85,24 +101,6 @@ Route::get('/api', function (Request $request) {
     $api = $data;
 
     return $api;
-});
-
-
-Auth::routes([
-    'register' => false
-]);
-
-// Graph
-Route::get('/sentiment-chart/dataAll', [HomeController::class, 'getSentimentChartData'])->name('sentiment-chart.dataAll');
-Route::get('/sentiment-chart/dataPredict', [HomeController::class, 'getSentimentChartPredict'])->name('sentiment-chart.dataPredict');
-
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
-    Route::resource('/preprocessing-data', PreprocessingDataController::class);
-    Route::resource('/training-data', TrainingDataController::class);
-    Route::resource('/testing-data', TestingDataController::class);
-    Route::resource('/predict-result', PredictResultDataController::class);
-
 });
 
 

@@ -11,11 +11,11 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto">
-                        <a href="/" class="nav-item nav-link active">Home</a>
-                        <a href="/sentiment" class="nav-item nav-link">Sentiment</a>
-                        <a href="/statistic" class="nav-item nav-link">Statistic</a>
-                        <a href="/about" class="nav-item nav-link">About</a>
-                        <a href="{{ route('login') }}" class="nav-item nav-link">Login</a>
+                        <a href="/" class="nav-item nav-link {{Request::is('/') ? 'active' : '' }}">Home</a>
+                        <a href="/sentiment" class="nav-item nav-link {{Request::is('sentiment') ? 'active' : '' }}">Sentiment</a>
+                        <a href="/statistic" class="nav-item nav-link {{Request::is('statistic') ? 'active' : '' }}">Statistic</a>
+                        <a href="/about" class="nav-item nav-link {{Request::is('about') ? 'active' : '' }}">About</a>
+                        <a href="{{ route('login') }}" class="nav-item nav-link {{Request::is('login') ? 'active' : '' }}">Login</a>
                     </div>
                 </div>
             </nav>

@@ -56,6 +56,7 @@
     </div>
 
 @stop
+
 @push('js')
     <form action="" id="delete-form" method="post">
         @method('delete')
@@ -64,7 +65,7 @@
     <script>
         $('#example').DataTable({
             "responsive": true,
-            'iDisplayLength': 25
+            'iDisplayLength': 10
         });
         function notificationBeforeDelete(event, el) {
             event.preventDefault();

@@ -35,8 +35,48 @@
     </div>
     <!-- About End -->
 
+@push('graph')
 
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
 
+function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+    ['Sentiment', 'Content'],
+    @foreach($sentimentDataPredictGraphCNN as $data)
+        ['{{ $data[0] }}', {{ $data[1] }}],
+    @endforeach
+    ]);
+
+    var options = {
+    title: 'Convolution Neural Network'
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    chart.draw(data, options);
+
+    var data2 = google.visualization.arrayToDataTable([
+    ['Sentiment', 'Content'],
+    @foreach($sentimentDataPredictGraphLSTM as $data2)
+        ['{{ $data2[0] }}', {{ $data2[1] }}],
+    @endforeach
+    ]);
+
+    var options2 = {
+    title: 'Recurrent Neural Network (LSTM)'
+    };
+
+    var chart2 = new google.visualization.PieChart(document.getElementById('piechart2'));
+    chart2.draw(data2, options2)
+}
+</script>
+
+@endpush
 
 @endsection
+
+
+
 

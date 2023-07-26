@@ -13,6 +13,6 @@ class PredictResultDataController extends Controller
         $predictResultDatas = PredictResultData::all();
         $category = Category::all();
 
-        return view('index-predict-result', compact(['predictResultDatas', 'category']));
+        return view('index-predict-result', compact();
     }
 }
