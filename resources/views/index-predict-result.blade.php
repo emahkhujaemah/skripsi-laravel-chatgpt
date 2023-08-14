@@ -27,14 +27,15 @@
 
             <div class="card">
                 <div class="card-body">
-                    <a href="{{ route('preprocessing-data.create') }}" class="btn btn-primary btn-sm mb-2"><i class="fa fa-fw fa-plus-square"></i>Import Data</a>
+                    <a href="{{ route('export-cnn') }}" class="btn btn-primary btn-sm mb-2"><i class="fas fa-download"></i>Export CNN</a>
+                    <a href="{{ route('export-lstm') }}" class="btn btn-success btn-sm mb-2"><i class="fas fa-download"></i>Export LSTM</a>
                     <table class="table table-hover table-bordered table-stripped table-responsive p-0" id="example">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Opinion</th>
+                                <th>Text</th>
                                 <th>Category</th>
-                                {{-- <th>Aksi</th> --}}
+                                <th>Confidence</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -43,7 +44,7 @@
                                 <td> {{$loop->iteration}} </td>
                                 <td>{{$predictResultData->text}}</td>
                                 <td>{{$predictResultData->sentiment}}</td>
-                                {{-- <td>Edit,Hapus</td> --}}
+                                <td>{{$predictResultData->confidence}}</td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -64,8 +65,16 @@
     <script>
         $('#example').DataTable({
             "responsive": true,
-            'iDisplayLength': 10
+            'iDisplayLength': 10,
+            "buttons": ["copy", "excel",
+            {
+                extend: 'pdfHtml5',
+                orientation: 'landscape',
+                pageSize: 'LEGAL' 
+            }]
         });
+
+
         function notificationBeforeDelete(event, el) {
             event.preventDefault();
             if (confirm('Apakah anda yakin akan menghapus data ? ')) {

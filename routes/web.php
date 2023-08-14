@@ -38,6 +38,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/training-data', TrainingDataController::class);
     Route::resource('/testing-data', TestingDataController::class);
     Route::resource('/predict-result', PredictResultDataController::class);
+    Route::get('generate-pdf-cnn', [PredictResultDataController::class, 'generatePDFcnn'])->name('export-cnn');
+    Route::get('generate-pdf-LSTM', [PredictResultDataController::class, 'generatePDFlstm'])->name('export-lstm');
 });
 
 

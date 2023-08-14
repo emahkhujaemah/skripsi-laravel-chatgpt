@@ -26,8 +26,8 @@
     <div class="container-fluid py-5">
         <div class="container py-5">
             <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 500px;">
-                <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3">Prediction CNN</div>
-                <h1 class="mb-4">Prediction Sentiment</h1>
+                <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3">Convolution Neural Network</div>
+                <h3 class="mb-4">Prediction Sentiment CNN</h3>
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-7">
@@ -72,8 +72,8 @@
     <div class="container-fluid py-5">
         <div class="container py-5">
             <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 500px;">
-                <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3">Prediction LSTM</div>
-                <h1 class="mb-4">Prediction Sentiment</h1>
+                <div class="btn btn-sm border rounded-pill text-primary px-3 mb-3">Long Short-Term Memory</div>
+                <h3 class="mb-4">Prediction Sentiment LSTM</h3>
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-7">

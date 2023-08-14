@@ -27,7 +27,7 @@
 
             <div class="card">
                 <div class="card-body">
-                    <a href="{{ route('preprocessing-data.create') }}" class="btn btn-primary btn-sm mb-2"><i class="fa fa-fw fa-plus-square"></i>Import Data</a>
+                    {{-- <a href="{{ route('preprocessing-data.create') }}" class="btn btn-primary btn-sm mb-2"><i class="fa fa-fw fa-plus-square"></i>Import Data</a> --}}
                     <table class="table table-hover table-bordered table-stripped table-responsive p-0" id="example">
                         <thead>
                             <tr>
@@ -43,13 +43,13 @@
                                 <td> {{$loop->iteration}} </td>
                                 <td>{{$preprocessingData->opinion}}</td>
                                 <td>{{$preprocessingData->category->name_category}}</td>
-                                <!-- <td width="5%">
+                                {{-- <td width="5%">
                                     <div class="btn btn-group">
                                         <a href="{{ route('santri.show', $santri) }}" class="btn btn-sm btn-success" ><i class="fas fa-eye"></i></a>
                                         <a href="{{ route('santri.edit', $santri) }}" class="btn btn-sm btn-warning" ><i class="fas fa-edit"></i></a>
                                         <a href="{{route('preprocessing-data.destroy', $preprocessingDatas)}}" onclick="notificationBeforeDelete(event, this)" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
                                     </div>
-                                </td> -->
+                                </td> --}}
                             </tr>
                             @endforeach
                         </tbody>

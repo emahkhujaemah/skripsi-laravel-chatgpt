@@ -27,7 +27,7 @@
 
             <div class="card">
                 <div class="card-body">
-                    <a href="{{ route('preprocessing-data.create') }}" class="btn btn-primary btn-sm mb-2"><i class="fa fa-fw fa-plus-square"></i>Import Data</a>
+                    {{-- <a href="{{ route('preprocessing-data.create') }}" class="btn btn-primary btn-sm mb-2"><i class="fa fa-fw fa-plus-square"></i>Import Data</a> --}}
                     <table class="table table-hover table-bordered table-stripped table-responsive p-0" id="example">
                         <thead>
                             <tr>
